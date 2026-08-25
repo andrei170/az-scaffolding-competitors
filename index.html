@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A-Z Scaffolding — Competitor Analysis</title><style>
+:root{--bg:#0d1117;--panel:#161b22;--ink:#e6edf3;--mut:#9aa7b4;--line:#2a3340;--accent:#2f81f7;
+  --good:#3fb950;--bad:#f85149;--gradF:#f85149;--gradD:#e8702a;--gradC:#d29922;--gradB:#3fb950;--gradA:#2ea043;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mut);font-weight:600}
+header{padding:46px 0 28px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 400px at 70% -10%,rgba(47,129,247,.18),transparent)}
+h1{font-size:30px;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:15px}
+.hero{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;margin:34px 0 8px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.gradecard{border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;position:relative;overflow:hidden}
+.gc-F{background:linear-gradient(160deg,#2a1410,#1c2330)}.gc-D{background:linear-gradient(160deg,#2a1c10,#1c2330)}
+.gc-C{background:linear-gradient(160deg,#2a2410,#1c2330)}.gc-B{background:linear-gradient(160deg,#102a1a,#1c2330)}
+.bigletter{font-size:96px;font-weight:900;line-height:1;position:relative}
+.bl-F{color:var(--gradF);text-shadow:0 0 40px rgba(248,81,73,.45)}
+.bl-D{color:var(--gradD);text-shadow:0 0 40px rgba(232,112,42,.45)}
+.bl-C{color:var(--gradC);text-shadow:0 0 40px rgba(210,153,34,.45)}
+.score100{font-size:18px;color:var(--mut);margin-top:6px;position:relative}
+.heroread h2{font-size:21px;font-weight:800;margin-bottom:10px}
+.heroread p{color:var(--mut);font-size:15.5px}
+.heroread .tag{display:inline-block;margin-top:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink);background:var(--panel)}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.h{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.rname{font-weight:600;font-size:15px}
+.bar{height:7px;background:#0b0f15;border-radius:99px;margin-top:9px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.badge{font-weight:800;font-size:15px;min-width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0d1117}
+.gF{background:var(--gradF)}.gD{background:var(--gradD)}.gC{background:var(--gradC)}.gB{background:var(--gradB);color:#06210f}.gA{background:var(--gradA);color:#06210f}
+.sc{font-size:12px;color:var(--mut);margin-top:3px}
+.flag{background:linear-gradient(160deg,#2a1410,#161b22);border:1px solid #6f2a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.flag .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--bad);font-weight:700;margin-bottom:8px}
+.win{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.win .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--good);font-weight:700;margin-bottom:8px}
+.warn{background:linear-gradient(160deg,#2a2410,#161b22);border:1px solid #6f5a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.warn .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gradC);font-weight:700;margin-bottom:8px}
+.flag p,.win p,.warn p{color:var(--mut);font-size:14.5px;margin-bottom:9px}
+.flag p:last-child,.win p:last-child,.warn p:last-child{margin-bottom:0}
+.flag b,.win b,.warn b{color:var(--ink)}
+.flag ul,.win ul,.warn ul{margin:0 0 9px 20px;color:var(--mut);font-size:14.5px}
+.flag li,.win li,.warn li{margin-bottom:6px}
+.code{background:#0b0f15;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.85;color:var(--mut);overflow-x:auto}
+.code .ph{color:#ff9d94;font-weight:700}.code .ok{color:#84e0a8;font-weight:700}.code .c{color:#5b6672}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp th{text-align:left;padding:11px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);font-weight:700}
+.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--mut);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}.cmp td b{color:var(--ink)}.cmp tr.you td{background:#241a12}
+.cmp .yes{color:var(--good);font-weight:700}.cmp .no{color:var(--bad);font-weight:700}
+.opp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.opp{grid-template-columns:1fr}}
+.ocard{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px;text-align:center}
+.ocard .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.ocard .big{font-size:30px;font-weight:900;color:var(--good);margin:8px 0 2px}
+.ocard .small{font-size:13px;color:var(--mut)}
+.oppnote{color:var(--mut);font-size:14px;margin-top:14px}.oppnote b{color:var(--ink)}
+.arrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 2px;flex-wrap:wrap}
+.pill{font-size:60px;font-weight:900;line-height:1}
+.pill.from-F{color:var(--gradF)}.pill.from-D{color:var(--gradD)}.pill.from-C{color:var(--gradC)}
+.pill.to{color:var(--gradA)}
+.pilllab{font-size:12px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:.1em}
+.ar{font-size:34px;color:var(--mut)}
+ul.road{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:760px){ul.road{grid-template-columns:1fr}}
+ul.road li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;font-size:14.5px}
+.road2 li{border-left-color:var(--good)}
+.cta{text-align:center;padding:40px 0 56px}
+.cta h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.cta p{color:var(--mut);font-size:15px}
+footer{color:var(--mut);font-size:12.5px;text-align:center;padding:22px 0 40px;line-height:1.7}
+</style></head><body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Competitor Analysis &middot; Scaffolding</div>
+    <h1>A-Z Scaffolding &mdash; Pontefract, Castleford &amp; Normanton</h1>
+    <div class="sub">Prepared for Adrian Clegg &middot; Company 10367013 &middot; 26 August 2026 &middot; free, whether or not we work together</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="gradecard gc-F">
+      <div class="bigletter bl-F">0</div>
+      <div class="score100">accreditations published &mdash; of the ones you hold</div>
+    </div>
+    <div class="heroread">
+      <h2>Every scaffolder we checked around you publishes their cards. You are the only one who does not.</h2>
+      <p>We read the homepages of three firms working your patch. <b>All three lead with CISRS.</b>
+      Two show CHAS. One shows NASC, Constructionline and SMAS as well. On the call you confirmed you
+      <b>hold these</b> &mdash; and <b>not one of them appears anywhere on a-zscaffoldingltd.co.uk.</b>
+      You are being out-marketed on credentials you already have.</p>
+      <span class="tag">Ten years trading &middot; &pound;682k last year &middot; nothing spent on marketing</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="h">The Comparison, Read From Their Own Homepages</div>
+    <table class="cmp">
+      <tr><th>Firm</th><th>Based</th><th>Accreditations shown</th><th>Tap-to-call</th></tr>
+      <tr><td><b>Maine Scaffolding</b></td><td>Castleford page</td>
+        <td><span class="yes">CISRS, NASC, CHAS, Constructionline, SMAS, public liability</span></td><td><span class="no">No</span></td></tr>
+      <tr><td><b>Yorkshire Netting &amp; Scaffolding</b></td><td>Castleford</td>
+        <td><span class="yes">CISRS, CHAS, TG20</span></td><td><span class="yes">Yes</span></td></tr>
+      <tr><td><b>EBN Scaffolding</b></td><td>Normanton</td>
+        <td><span class="yes">CISRS, TG20, public liability</span></td><td><span class="yes">Yes</span></td></tr>
+      <tr class="you"><td><b>A-Z Scaffolding</b></td><td>Pontefract</td>
+        <td><span class="no">None found anywhere on the site</span></td><td><span class="no">No</span></td></tr>
+    </table>
+    <div class="flag" style="margin-top:16px">
+      <div class="lab">Why this is the most annoying finding in the document</div>
+      <p>If they held cards and you did not, this would be a real competitive problem and an expensive
+      one to fix. <b>That is not the situation.</b> You told us you hold them. The gap is not
+      capability, it is that <b>yours are in a folder and theirs are on a homepage.</b></p>
+      <p>A main contractor filling a package does not ring five scaffolders and ask. He opens five
+      websites, and the ones that cannot evidence carded scaffolders and TG20 compliance in about four
+      seconds do not make the shortlist. <b>You are being filtered out before anyone speaks to you</b>
+      &mdash; and you would never know, because a call that never happens leaves no trace.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">What Nobody In This Market Is Doing &mdash; Including Them</div>
+    <div class="win">
+      <div class="lab">We checked all four sites for tracking and enquiry routes. The results are unanimous.</div>
+      <div class="code">
+                          A-Z    Maine   Yorkshire N.   EBN
+GA4 / analytics          <span class="ph">none</span>   <span class="ph">none</span>    <span class="ph">none</span>           <span class="ph">none</span>
+Enquiry form on homepage <span class="ph">none</span>   <span class="ph">none</span>    <span class="ph">none</span>           <span class="ph">none</span>
+      </div>
+      <p><b>Not one firm in this comparison is measuring anything, and not one has an enquiry form on
+      its homepage.</b> Every single one of them relies on somebody finding a phone number and choosing
+      to ring it.</p>
+      <p>That is the opportunity, and it is bigger than the accreditation gap. <b>This is not a
+      sophisticated market.</b> Nobody is running measured advertising into a site built to convert,
+      because nobody has a site built to convert. The first firm here that does it is not competing on
+      a level field &mdash; it is playing a different game from the other three.</p>
+      <p>It also reframes what you said on the call about ten years without marketing. <b>You have not
+      fallen behind. Nobody has moved.</b></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">Where They Beat You On Basics</div>
+    <div class="warn">
+      <div class="lab">Two of the three have a tappable phone number. You do not.</div>
+      <p><b>EBN</b> publishes a mobile as a tap-to-call link. <b>Yorkshire Netting</b> publishes a
+      landline the same way. On a phone, one tap and it dials.</p>
+      <p>Your number is not a tel: link, and the audit already found there is <b>no phone number, no
+      form and no contact route on your homepage at all</b> &mdash; a visitor has to click through to
+      the contact page to find anything. That was the finding you said you did not know about.</p>
+      <p>Combine the two and the picture is uncomfortable: <b>a builder comparing you against EBN on a
+      phone can ring EBN in one tap and cannot ring you without effort.</b> Most people do not make the
+      effort. They ring the one that dialled.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">The Town-Page Point &mdash; Maine Is The One To Watch</div>
+    <div class="warn">
+      <div class="lab">They are the most commercially serious operator in this comparison</div>
+      <div class="code">
+Their page we found     <span class="ok">mainescaffolding.co.uk/castleford/</span>
+Its title tag           <span class="ok">Scaffolding Companies Castleford - Industrial &amp; Domestic Hire</span>
+
+Your homepage title     <span class="ph">Scaffold Directions in Yorkshire | A-Z Scaffolding Services LTD</span>
+Your town pages         <span class="ph">&#10007; none</span>
+      </div>
+      <p>Maine has <b>a dedicated page for Castleford</b> &mdash; a town on your doorstep &mdash; with
+      the town name and both markets in the title. Somebody searching &ldquo;scaffolding Castleford&rdquo;
+      meets a page written for exactly that search. They also publish the longest accreditation list of
+      anyone here.</p>
+      <p>Your own title says <b>&ldquo;Scaffold Directions in Yorkshire&rdquo;</b>. &ldquo;Yorkshire&rdquo;
+      is enormous and &ldquo;Scaffold Directions&rdquo; is not a phrase anybody types. <b>Nobody
+      searches for a county. They search for their town.</b></p>
+      <p>Town pages for Pontefract, Castleford, Wakefield, Normanton, Knottingley and Featherstone is
+      the same move, and none of the other two have made it either.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">What This Is Worth Against Your Own Numbers</div>
+    <div class="opp">
+      <div class="ocard"><div class="lab">Publishing your cards</div><div class="big">&pound;0</div><div class="small">you already hold them</div></div>
+      <div class="ocard"><div class="lab">Tap-to-call on every page</div><div class="big">&pound;0</div><div class="small">one line of code</div></div>
+      <div class="ocard"><div class="lab">Firms here measuring anything</div><div class="big">0</div><div class="small">of four, yours included</div></div>
+    </div>
+    <p class="oppnote">The first two cards are the point. <b>You did &pound;682,000 last year with a
+    website that cannot be contacted from its homepage and publishes none of your credentials.</b> The
+    two changes that close most of the gap on this page cost nothing but an afternoon &mdash; and they
+    happen before any conversation about advertising. On the call you set a goal of roughly
+    &pound;100,000 a month. Nothing here gets you there on its own; <b>all of it is the groundwork that
+    has to exist first.</b></p>
+  </section>
+
+  <section>
+    <div class="h">The Order We Would Do It In</div>
+    <ul class="road">
+      <li><b>Publish CISRS, NASC and CHAS on the homepage</b> — every competitor does, you hold them, and it costs nothing</li>
+      <li><b>Put both numbers on every page as tap-to-call links</b> — two of the three beat you on this today</li>
+      <li><b>Add your insurance figures and TG20 compliance</b> — the two things a main contractor checks first</li>
+      <li><b>Ask ten recent customers for a Google review</b> — ten years of goodwill, no public rating anywhere</li>
+    </ul>
+    <div class="h" style="margin-top:24px">Then &mdash; Where Nobody Else Is</div>
+    <ul class="road road2">
+      <li><b>Analytics and conversion tracking.</b> None of the four has any. Being the only firm that can measure is a permanent advantage</li>
+      <li><b>An enquiry form that asks height, duration and site address</b> — nobody in this comparison has a homepage form at all</li>
+      <li><b>Town pages</b> for Pontefract, Castleford, Wakefield, Normanton, Knottingley and Featherstone — only Maine has made this move</li>
+      <li><b>A commercial page</b> a main contractor can put through procurement</li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    <h2>Three competitors, every one of them flying the cards you keep in a drawer.</h2>
+    <p>None of them is measuring anything and none of them has a homepage form. The credentials gap
+    is embarrassing and free to close. What comes after it is where the actual advantage is.</p>
+  </div>
+
+</div>
+
+<footer>
+  Prepared by Andrei Givero &middot; AG1 Consulting &middot; 26 August 2026 &middot; provided free of charge<br>
+  For Adrian Clegg of A-Z Scaffolding Services Ltd (company 10367013), Pontefract. Competitor findings
+  were read from the served page source of ebnscaffolding.co.uk, yorkshirenettingandscaffoldingltd.co.uk
+  and mainescaffolding.co.uk/castleford/ on 25 August 2026, and from a-zscaffoldingltd.co.uk on the same
+  date. They reflect those pages on that date only and sites change. <b>&ldquo;Accreditations shown&rdquo;
+  means the term appeared in the served page we read &mdash; it is a record of what each firm publishes,
+  not a verification that any firm holds a given accreditation, and we have not checked any register.</b>
+  Equally, <b>absence means it was not published on the page &mdash; not that a firm does not hold it</b>;
+  that applies to your own site as much as to theirs. The three firms were identified through public
+  search as serving your area and are not an exhaustive list of your competitors. Your own
+  accreditations, revenue of &pound;682,000, trading history and growth goal are <b>as you stated them on
+  our call of 25 August 2026</b> and have not been independently verified. Nothing here forecasts leads,
+  jobs or revenue, and no result is promised or guaranteed.
+</footer>
+</body></html>
